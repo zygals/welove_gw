@@ -412,6 +412,16 @@ u{
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
+  position: relative;
+}
+.mask-code {
+  position: absolute;
+  left:100px;
+  top: 0;
+  opacity: 0;
+}
+.social:hover .mask-code{
+  opacity: 1;
 }
 .social span {
   margin-left: 10px;
@@ -627,6 +637,24 @@ u{
 .news-item:hover p{
   transition: all .2s;
   color: #fff;
+}
+.load-more{
+  padding: 20px 0;
+  text-align: center;
+}
+
+.load-more span {
+  padding: 5px 20px;
+  border:1px solid #eee;
+  color: #fff;
+  background-color: #f0ad4e;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 3px 3px 1px #eee;
+}
+.load-more span:hover {
+  background-color: #fff;
+  color: #000;
 }
 
 /*资讯详情*/
