@@ -11,6 +11,8 @@ Route::get('new/:id','article/read');
 Route::get('app','app/index');
 //news list
 Route::get('news','Article/index');
+//new
+Route::get('new/id','Article/read');
 
 
 

@@ -14,7 +14,17 @@ use think\Db;
 //use think\db\Query;
 use think\Request;
 
-class ArticleController extends Controller {
+class ArticleController extends BaseController {
+    public function __construct(Request $request = null) {
+        parent::__construct($request);
+        $which_nav = [
+            'is_index'=>0,
+            'is_app'=>0,
+            'is_news'=>1,
+            'is_about'=>0,
+        ];
+        $this->assign(['which_nav'=>$which_nav]);
+    }
     public function index(Request $request) {
         $data = $request->param();
 
@@ -33,7 +43,7 @@ class ArticleController extends Controller {
 
     public function read(Request $request) {
         $data = $request->param();
-        dump($data['id']);exit;
+
         $row_ = Article::findOne($data['id']);
         if (!$row_) {
             $this->error('暂无数据');

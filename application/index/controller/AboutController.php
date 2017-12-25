@@ -8,13 +8,19 @@ use app\common\model\SeoSet;
 use think\Controller;
 use think\Request;
 
-class AboutController extends Controller
+class AboutController extends BaseController
 {
     public function __construct(Request $request = null) {
         parent::__construct($request);
         $row_ad = Ad::getAdByPosition(5);
         $seo = SeoSet::getSeoByNavId(5);
-        $this->assign(['row_ad'=>$row_ad,'seo'=>$seo]);
+        $which_nav = [
+            'is_index'=>0,
+            'is_app'=>0,
+            'is_news'=>0,
+            'is_about'=>1,
+        ];
+        $this->assign(['row_ad'=>$row_ad,'seo'=>$seo,'which_nav'=>$which_nav]);
     }
 
     public function index()
