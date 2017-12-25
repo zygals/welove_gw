@@ -141,7 +141,7 @@ return [
     ],
 
     // 视图输出字符串内容替换
-    'view_replace_str' => ['__STATIC__' => '/welovepctp/public/static/', '__IMGURL__' => '/welovepctp/public/', '__PUBLIC__' => '/welovepctp/public/static/back/', '__EDITOR__' => '/welovepctp/public/editor/',],
+    'view_replace_str' => ['__STATIC__' => '/welove_gw/public/static/', '__IMGURL__' => '/welove_gw/public/', '__PUBLIC__' => '/welove_gw/public/static/back/', '__EDITOR__' => '/welove_gw/public/editor/',],
     // 默认跳转页面对应的模板文件
     'dispatch_success_tmpl' => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',
     'dispatch_error_tmpl' => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',
