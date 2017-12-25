@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name=”viewport” content=”width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no” />
+    <title>We Love</title>
+    <link rel="stylesheet" href="__STATIC__css/style.css">
+    <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="wrapper">
+    <div class="header wrap">
+        <img src="__STATIC__images/logo.png" alt="logo" class="logo">
+        <ul class="nav">
+            <li class="active"><a href="{:url('/')}">首页</a></li>
+            <li><a href="{:url('/app')}">下载APP</a></li>
+            <li><a href="{:url('/news')}">新闻报道</a></li>
+            <li><a href="{:url('/about')}">关于我们</a></li>
+        </ul>
+    </div>
+
+
+{__CONTENT__}
+
+    <div class="footer">
+        <div class="foot-wrap">
+            <div class="foot foot1">
+                <div class="foot-txt-wrap">
+                    <p>客服电话: 010-82596399</p>
+                    <p>联系我们: 123@126.com</p>
+                    <p>北京慰衡国际贸易有限公司</p>
+                </div>
+                <img src="__STATIC__images/line.png" alt="" class="foot-line">
+            </div>
+            <div class="foot foot2">
+                <ul class="fast-links">
+                    <li><a href="">快速链接</a></li>
+                    <li><a href="">下载APP</a></li>
+                    <li><a href="">新闻</a></li>
+                    <li><a href="">加入我们</a></li>
+                    <li><a href="">关于我们</a></li>
+                </ul>
+                <ul class="friend-links">
+                    <li><a href="">友情链接</a></li>
+                    <li><a href="">WE LOVE</a></li>
+                </ul>
+                <img src="__STATIC__images/line.png" alt="" class="foot-line">
+            </div>
+            <div class="foot foot3">
+                <p class="foot-follow">关注我们 :</p>
+                <div class="social-wrap">
+                    <a class="social">
+                        <img src="__STATIC__images/wechat.png" alt="" class="wechat">
+                        <span>微信</span>
+                    </a>
+                    <a class="social">
+                        <img src="__STATIC__images/sina.png" alt="" class="wechat">
+                        <span>微博</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <p class="copy-right">粤网文[2016]2975-618号 粤ICP备12026999号-5</p>
+    </div>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/wow/1.1.2/wow.min.js"></script>
+<script>
+    new WOW().init();
+</script>
+</body>
+</html>
