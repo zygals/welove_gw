@@ -6,16 +6,18 @@
     <title>We Love</title>
     <link rel="stylesheet" href="__STATIC__css/style.css">
     <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
 <div class="wrapper">
     <div class="header wrap">
         <img src="__STATIC__images/logo.png" alt="logo" class="logo">
         <ul class="nav">
-            <li class="active"><a href="{:url('/')}">首页</a></li>
-            <li><a href="{:url('/app')}">下载APP</a></li>
-            <li><a href="{:url('/news')}">新闻报道</a></li>
-            <li><a href="{:url('/about')}">关于我们</a></li>
+
+            <li class="<?php echo $which_nav['is_index']==1?'active':'';?>"><a href="{:url('/')}">首页</a></li>
+            <li class="<?php echo $which_nav['is_app']==1?'active':'';?>" ><a href="{:url('/app')}">下载APP</a></li>
+            <li class="<?php echo $which_nav['is_news']==1?'active':'';?>"><a href="{:url('/news')}">新闻报道</a></li>
+            <li class="<?php echo $which_nav['is_about']==1?'active':'';?>"><a href="{:url('/about')}">关于我们</a></li>
         </ul>
     </div>
 
@@ -34,11 +36,12 @@
             </div>
             <div class="foot foot2">
                 <ul class="fast-links">
-                    <li><a href="">快速链接</a></li>
-                    <li><a href="">下载APP</a></li>
-                    <li><a href="">新闻</a></li>
-                    <li><a href="">加入我们</a></li>
-                    <li><a href="">关于我们</a></li>
+                    <li><a href="javascript:void(0)">快速链接</a></li>
+                    <li class="<?php echo $which_nav['is_index']==1?'active':'';?>"><a href="{:url('/')}">首页</a></li>
+                    <li class="<?php echo $which_nav['is_app']==1?'active':'';?>" ><a href="{:url('/app')}">下载APP</a></li>
+                    <li class="<?php echo $which_nav['is_news']==1?'active':'';?>"><a href="{:url('/news')}">新闻报道</a></li>
+                    <li class="<?php echo $which_nav['is_about']==1?'active':'';?>"><a href="{:url('/about')}">关于我们</a></li>
+
                 </ul>
                 <ul class="friend-links">
                     <li><a href="">友情链接</a></li>
@@ -69,7 +72,6 @@
         <p class="copy-right">粤网文[2016]2975-618号 粤ICP备12026999号-5</p>
     </div>
 </div>
-<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/wow/1.1.2/wow.min.js"></script>
 <script>
     new WOW().init();

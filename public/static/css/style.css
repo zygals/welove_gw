@@ -391,6 +391,15 @@ u{
   color: #bf9c47;
   text-decoration: underline;
 }
+
+.foot2 ul li.active {
+  
+  text-decoration: underline;
+}
+.foot2 ul li.active a {
+  color: #bf9c47;
+
+}
 .foot3 {
   padding-top: 20px;
   margin-left: 20px;
