@@ -12,8 +12,12 @@ use think\Request;
 
 class IndexController extends BaseController {
     public function index() {
-        $list_ad = Ad::getAdsByPosition(1);
+
+        $ad_logo = Ad::getAdByPosition(1);
+        $ad_bg1 = Ad::getAdByPosition(2);
         $seo = SeoSet::getSeoByNavId(1);
-        return $this->fetch('', compact('list_ad','seo'));
+
+
+        return $this->fetch('', compact('ad_logo','seo'));
     }
 }
