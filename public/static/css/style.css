@@ -23,7 +23,6 @@ h1,h2,h3,h4,h5,h6,em,del{
 */
 html, body {
   min-width: 1240px;
-  overflow-x: hidden;
 }
 nav ul {
   list-style:none;
@@ -413,6 +412,10 @@ u{
 }
 
 /*下载页面*/
+.download-wrap {
+  height: 800px;
+  background: url("../img/particulars_pic.jpg") center top no-repeat;
+}
 .inner1 {
   position: relative;
   width: 1180px;
