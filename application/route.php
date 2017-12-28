@@ -13,6 +13,7 @@ Route::get('new/:id','index/article/read');
 Route::get('app','index/app/index');
 //news list
 Route::get('news','index/Article/index');
+Route::get('about','index/About/index');
 //new
 Route::get('new/:id','index/Article/read');
 
