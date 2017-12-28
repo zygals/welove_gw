@@ -22,7 +22,7 @@ h1,h2,h3,h4,h5,h6,em,del{
 }
 */
 html, body {
-  min-width: 100%;
+  min-width: 1240px;
 }
 nav ul {
   list-style:none;
@@ -213,9 +213,7 @@ u{
 
 
 /*首页*/
-.wrapper {
-  min-width: 1240px;
-}
+
 .wrap {
   position: relative;
   width: 1180px;
@@ -414,11 +412,6 @@ u{
 }
 
 /*下载页面*/
-.download-wrap {
-  width: 1240px;
-  height: 800px;
-  background: url("../img/particulars_pic.jpg") center no-repeat;
-}
 .inner1 {
   position: relative;
   width: 1180px;
