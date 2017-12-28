@@ -21,3 +21,4 @@ Route::get('new/:id','index/Article/read');
 
 
 
+
