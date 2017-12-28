@@ -8,6 +8,23 @@
     }
 </style>
 
+<script>
+    KindEditor.ready(function (K) {
+        // var editor = K.create('#desc_textarea');
+        var editor = K.create('textarea[name="info"]',{
+            themeType: 'simple',
+            resizeType: 1,
+            uploadJson: '__EDITOR__/php/upload_json.php',
+            fileManagerJson: '__EDITOR__/php/file_manager_json.php',
+            allowFileManager: true,
+            //下面这行代码就是关键的所在，当失去焦点时执行 this.sync();
+            afterBlur: function(){this.sync();}
+        });
+
+    });
+
+</script>
+
 <!--弹出添加用户窗口-->
 <form class="form-horizontal" action="{:url($act)}" method="post" enctype="multipart/form-data">
 
@@ -20,42 +37,34 @@
             <div class="">
                 <div class="container-fluid">
                     <div class="form-group ">
-                        <label for="sName" class="col-xs-5 control-label">客服qq：</label>
+                        <label  class="col-xs-5 control-label">客服电话：</label>
                         <div class="col-xs-7">
-                            <input type="text" class="form-control input-sm" name='qqs' value="{$list->qqs|default=''}" placeholder="多个以,隔开" >
-                        </div>
-                    </div>
-                   <!-- <div class="form-group ">
-                        <label for="sName" class="col-xs-5 control-label">平台联系人：</label>
-                        <div class="col-xs-7 ">
-                            <input type="text" class="form-control input-sm duiqi" name='contact' value="{$list->contact|default=''}" >
+                            <input type="text" class="form-control input-sm" name='kefu' value="{$list->kefu|default=''}"  >
                         </div>
                     </div>
                     <div class="form-group ">
-                        <label for="sName" class="col-xs-5 control-label">公司地址：</label>
+                        <label  class="col-xs-5 control-label">邮箱：</label>
                         <div class="col-xs-7 ">
-                            <input type="text" class="form-control input-sm duiqi" name='address' value="{$list->address|default=''}" >
+                            <input type="text" class="form-control input-sm duiqi" name='email' value="{$list->email|default=''}" >
                         </div>
                     </div>
                     <div class="form-group ">
-                        <label for="sName" class="col-xs-5 control-label">平台电话：</label>
+                        <label  class="col-xs-5 control-label">公司名称：</label>
                         <div class="col-xs-7 ">
-                            <input type="text" class="form-control input-sm duiqi" name='mobile' value="{$list->mobile|default=''}" >
+                            <input type="text" class="form-control input-sm duiqi" name='company_name' value="{$list->company_name|default=''}" >
                         </div>
                     </div>
                     <div class="form-group ">
-                        <label for="sName" class="col-xs-5 control-label">客服电话：</label>
+                        <label  class="col-xs-5 control-label">备案号：</label>
                         <div class="col-xs-7 ">
-                            <input type="text" class="form-control input-sm duiqi" name='telephone' value="{$list->telephone|default=''}" >
+                            <input type="text" class="form-control input-sm " name='beian' value="{$list->beian|default=''}" >
                         </div>
                     </div>
                     <div class="form-group ">
-                        <label for="sName" class="col-xs-5 control-label">关于我们图：</label>
-                        <div class="col-xs-7 ">
-                            <img src="__IMGURL__{$list->img|default=''}" alt="没有上传图片" width="188"/>
-                            <input type="file" title='' class="form-control  duiqi" id="sOrd" name="img" placeholder=""><span style="color:red">尺寸要求（750*350），大小不超过<?php /*echo floor(config('upload_size')/1024/1024);*/?>M。</span>
-
-                        </div>-->
+                        <label class="col-xs-3 control-label"><span style="color:red;">*&nbsp;&nbsp;</span>公司简介：</label>
+                        <div class="col-xs-8 ">
+                            <textarea name="info"  style="width:600px;height:500px;">{$list->info|default=''}</textarea>
+                        </div>
                     </div>
 
                     <div class="text-center">

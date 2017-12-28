@@ -27,11 +27,6 @@ class Friend extends model {
         $list_ = self::where($where)->order('create_time asc')->paginate();
         return $list_;
     }
-/*    public static function getIndexList(){
-        $where = ['status' => ['=',1]];
-        $list_ = self::where($where)->order('create_time asc')->select();
 
-        return $list_;
-    }*/
 
 }

@@ -102,11 +102,11 @@ class Ad extends model {
                 'width' => '524',
                 'height' => '706',
             ],
-            14 => (object)[ //null
+            14 => (object)[
                 'id' => 14,
                 'name' => '下载APP－美工字',
-                'width' => '750',
-                'height' => '300',
+                'width' => '580',
+                'height' => '104',
             ],
             15 => (object)[
                 'id' => 15,

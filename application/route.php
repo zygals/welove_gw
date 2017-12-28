@@ -10,9 +10,12 @@ Route::get('new/:id','article/read');
 //download app
 Route::get('app','app/index');
 //news list
-Route::get('news','Article/index');
+Route::get('news','index/Article/index');
 //new
-Route::get('new/id','Article/read');
+Route::get('new/:id','Article/read');
+
+
+
 
 
 

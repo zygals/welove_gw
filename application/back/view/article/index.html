@@ -14,15 +14,11 @@
         <div class="col-xs-11">
             <form method="get" action="{:url('index')}" id="searchForm">
                 <div class="col-xs-7">
-                        <select name="cate" style="color:inherit">
+                        <select name="cate_id" style="color:inherit">
                             <option value="">--资讯分类--</option>
-
-                                <option value="1" {eq name="Think.get.cate" value="1"
-                                        }selected{/eq}>媒体报道</option>
-                            <option value="2" {eq name="Think.get.cate" value="2"
-                                    }selected{/eq}>行业资讯</option>
-                            <option value="3" {eq name="Think.get.cate" value="3"
-                                    }selected{/eq}>企业动态</option>
+                            <?php foreach($list_cate as $cate) { ?>
+                                <option value="{$cate->id}" >{$cate->name}</option>
+                            <?php }?>
                         </select>
                     <input type="text" name="name" value="{$Think.get.name}" class="form-control input-sm"
                            placeholder="输入名称搜索">
@@ -40,9 +36,9 @@
                     <label class=" ">
                         <input type="checkbox" name="sort_type" id="" value="desc" {eq name="Think.get.sort_type" value="desc"
                                }checked{/eq}>降序</label>
-                    <label class="">
+                    <!--<label class="">
                         <input type="checkbox" name="index_show" id="" value="1" {eq name="Think.get.index_show" value="1"
-                               }checked{/eq}>首页推荐</label>
+                               }checked{/eq}>首页推荐</label>-->
                     <button class="btn btn-white btn-xs " type="submit">提交</button>
                 </div>
             </form>
@@ -62,9 +58,7 @@
             <div class="col-xs-1">
                 小图
 			</div>
-            <div class="col-xs-1">
-                首页
-            </div>
+
 			<div class="col-xs-1">
                 点击
 			</div>
@@ -100,9 +94,7 @@
                         <img src="__IMGURL__{$row_->img}" height="55"  alt="没有">
                     </a>
                 </div>
-                <div class="col-xs-1 ">
-                    {$row_->index_show}
-                </div>
+
 
                 <div class="col-xs-1">
                     {$row_->click}

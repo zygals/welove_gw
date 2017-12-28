@@ -4,7 +4,7 @@ namespace app\common\model;
 
 use think\Model;
 
-class Cate extends model {
+class Nav extends model {
 
     public function getTpAttr($value) {
         $status = [1 => '资讯', 2 => '案例'];
@@ -26,6 +26,18 @@ class Cate extends model {
         $list_ = self::where($where)->order($order)->select();
 
         return $list_;
+    }
+
+    public static  function findOne($id) {
+        $row_=self::where(['id'=>$id,'st'=>1])->find();
+        if($row_){
+            return $row_;
+        }
+        return (object)[
+            'title'=>'welove首页',
+            'keywords'=>'welove首页keywords',
+            'description'=>'welove首页description',
+        ];
     }
 
 }

@@ -63,18 +63,18 @@
     <?php $list_first_menu = \app\common\model\MenuAdmin::getList() ?>
     <div class="leftMeun" id="leftMeun">
         <div id="logoDiv">
-            欢迎使用后台
+            欢迎使用{:config('site_name')}后台
             <p id="logoP">
-
-                <a href="{:url('index/clear_cache')}">
+                <!--<a href="{:url('index/clear_cache')}">
                     <button class="alert btn-xs">清理前台缓存</button>
-                </a></p>
+                </a>
+-->                </p>
         </div>
         <div id="personInfor">
             <p id="userName">{php} if(session('admin_guoshu'))echo session('admin_guoshu')->name{/php} <a
                         href="{:Url('admin/logout')}">&nbsp;&nbsp;&nbsp;&nbsp;退出登录</a></p>
-            <p><a href="{:Url('gshpc/index/index')}" target="_blank">前台</a></p>
-        <p><a href="{:Url('menu_admin/index')}">管理菜单</a></p>
+            <p><a href="__IMGURL__index.php" target="_blank">前台</a></p>
+        <!--<p><a href="{:Url('menu_admin/index')}">管理菜单</a></p>-->
             <p><a href="{:Url('index/index')}">登录日志</a></p>
         </div>
         <?php foreach ($list_first_menu as $k => $row_first_menu) { ?>

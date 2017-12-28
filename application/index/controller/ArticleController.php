@@ -2,46 +2,44 @@
 
 namespace app\index\controller;
 
+use app\common\model\Ad;
 use app\common\model\Article;
-use app\common\model\Base;
-use app\common\model\CateShipin;
-use app\common\model\Host;
-use app\common\model\SeoSet;
-use app\common\model\Shipin;
-use think\Cache;
-use think\Controller;
-use think\Db;
-//use think\db\Query;
+use app\common\model\Cate;
+use app\common\model\Nav;
 use think\Request;
 
 class ArticleController extends BaseController {
     public function __construct(Request $request = null) {
         parent::__construct($request);
-        $which_nav = [
-            'is_index'=>0,
-            'is_app'=>0,
-            'is_news'=>1,
-            'is_about'=>0,
-        ];
-        $this->assign(['which_nav'=>$which_nav]);
+
     }
+
     public function index(Request $request) {
-        $data = $request->param();
-
-
-        return $this->fetch('', compact(''));
+        $list_cate = Cate::getList();
+        $ad = Ad::getAdByPosition(20);
+        $list_new=Article::getList(4,['cate_id'=>$list_cate[0]->id,'paixu'=>'sort'], ['article.st' => ['=', 1]]);
+        if($list_new->lastPage()>1){
+           $more=true;
+        }else{
+            $more=false;
+        }
+        $seo = Nav::findOne(3);
+        return $this->fetch('', compact('ad', 'list_cate','list_new','more','seo'));
     }
-
+//ajax
     public function get_list(Request $request) {
-        $data = $request->param();
-        $list_new = Article::getList(['cate' => $data['cate']], ['st' => 1]);
-        $page_str = $list_new->render();
-        $page_str = Base::getPageStr($data, $page_str);
-        return $this->fetch('list', ['list_new' => $list_new, 'page_str' => $page_str]);
+        $data = $request->get();
+        $list_new = Article::getList(4,['cate_id' => $data['cate_id'],'paixu'=>'sort'], ['article.st' => 1]);
+
+        if($list_new->isEmpty()){
+              return ['code'=>__LINE__,'msg'=>'暂无内容'];
+        }
+        return ['code'=>0,'data'=>$list_new];
 
     }
 
     public function read(Request $request) {
+        //用新而已
         $data = $request->param();
 
         $row_ = Article::findOne($data['id']);
@@ -55,40 +53,8 @@ class ArticleController extends BaseController {
             'description' => $row_->description,
         ];
         // dump($row_->cate);exit;
-        return $this->fetch('', ['row_news' => $row_, 'seo' => $seo]);
+        return $this->fetch('', ['row_' => $row_, 'seo' => $seo]);
 
-    }
-
-
-    public function chuangke(Request $request) {
-        $data = $request->param();
-        $cate_id = 0;
-        if (isset($data['cate_id']) && !empty($data['cate_id'])) {
-            $cate_id = $data['cate_id'];
-        }
-
-        $this->view->engine->layout(false);
-        $list_shipin_index_show = Shipin::getList(['index_show' => 1, 'paixu' => 'sort'],['shipin.st' => ['=', 1]]);
-        $list_shipin = Shipin::getList(['paixu' => 'sort', 'cate_id' => $cate_id], ['shipin.st' => ['=', 1]]);
-        $list_cate = CateShipin::getList(['paixu' => 'sort']);
-        $list_host = Host::getList();
-//        dump($list_host);
-        return $this->fetch('', compact('list_shipin_index_show', 'list_shipin', 'list_cate','cate_id','list_host'));
-    }
-    public function read_shipin(Request $request){
-        $data = $request->param();
-        $row_ = Shipin::getOne($data['id']);
-        if(!$row_){
-            $this->error('暂无数据');
-        }
-        $row_->setInc('click');
-        $list_comment = Shipin::getList(['paixu' => 'sort', 'cate_id' => $row_->cate_id]);
-        $seo = (object)[
-            'title' => $row_->name . '_' . $row_->cate_name . '_' .'运营客堂_'. config('site_name'),
-            'keywords' => $row_->keywords,
-            'description' => $row_->description,
-        ];
-        return $this->fetch('',['row_'=>$row_,'list_comment'=>$list_comment,'seo'=>$seo]);
     }
 
 

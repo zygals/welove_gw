@@ -5,6 +5,7 @@ namespace app\back\controller;
 use app\common\model\Article;
 use app\common\model\Base;
 
+use app\common\model\Cate;
 use think\Request;
 
 
@@ -15,12 +16,14 @@ class ArticleController extends BaseController {
      * @return \think\Response
      */
     public function index(Request $request) {
+       // echo 123;exit;
         $data = $request->param();
-        $list_ = Article::getList($data);
+        $list_ = Article::getList(10,$data);
         $page_str = $list_->render();
         $page_str = Base::getPageStr($data,$page_str);
         $url = $request->url();
-        return $this->fetch('index', ['list_' => $list_,'url'=>$url,'page_str'=>$page_str]);
+        $list_cate = Cate::getList();
+        return $this->fetch('index', ['list_' => $list_,'url'=>$url,'page_str'=>$page_str,'list_cate'=>$list_cate]);
     }
 
     /**
@@ -29,8 +32,8 @@ class ArticleController extends BaseController {
      * @return \think\Response
      */
     public function create() {
-
-        return $this->fetch('',['title'=>'添加资讯','act'=>'save']);
+        $list_cate = Cate::getList();
+        return $this->fetch('',['title'=>'添加资讯','act'=>'save','list_cate'=>$list_cate]);
 
     }
 
@@ -78,7 +81,8 @@ class ArticleController extends BaseController {
         $data = $request->param();
         $row_ = $this->findById($data['id'],new Article());
         $referer = $request->header()['referer'];
-        return $this->fetch('',['act'=>'update','title'=>'修改资讯 '.$row_->name,'row_'=>$row_,'referer'=>$referer]);
+        $list_cate = Cate::getList();
+        return $this->fetch('',['act'=>'update','title'=>'修改资讯 '.$row_->name,'row_'=>$row_,'referer'=>$referer,'list_cate'=>$list_cate]);
     }
 
     /**

@@ -12,22 +12,18 @@ class Article extends Base {
         return $status[$value];
     }
 
-    public function getCateAttr($value) {
-        $status = [1 => '媒体报道', 2 => '行业资讯', 3 => '企业动态'];
-        return $status[$value];
+
+    public static function getListByCateId($cate_id) {
+        return self::getList(10,['cate_id'=>$cate_id]);
     }
 
-    public function getIndexShowAttr($value) {
-        $status = [0 => '否', 1 => '是'];
-        return $status[$value];
-    }
-
-    public static function getList($data = [],$where = ['article.st' => ['<>', 0]],$limit=0) {
-        $filed = 'article.*';
+    public static function getList($per,$data = [],$where = ['article.st' => ['<>', 0]]) {
+        $filed = 'article.*,cate.name cate';
+//     echo $per;exit;
        // $where = ['article.st' => ['<>', 0]];
         $order = "create_time desc";
-        if (!empty($data['cate'])) {
-            $where['cate'] = $data['cate'];
+        if (!empty($data['cate_id'])) {
+            $where['cate_id'] = $data['cate_id'];
         }
 
         if (!empty($data['name'])) {
@@ -42,12 +38,9 @@ class Article extends Base {
         if (!empty($data['paixu']) && !empty($data['sort_type'])) {
             $order = 'article.' . $data['paixu'] . ' desc';
         }
-        if($limit>0){
-            $list_ = self::where($where)->field($filed)->limit($limit)->order($order)->select();
-        }else{
 
-            $list_ = self::where($where)->field($filed)->order($order)->paginate();
-        }
+
+        $list_ = self::where($where)->field($filed)->join('cate','cate_id=cate.id')->order($order)->paginate($per);
 
 
         foreach ($list_ as $k => $value) {
@@ -55,10 +48,11 @@ class Article extends Base {
                 $list_[$k]->charm = mb_substr($value->charm, 0, 130, 'utf-8') . '......';
             }
         }
+//        dump($list_);exit;
         return $list_;
     }
     public static function findOne($id){
-        return self::where(['id'=>$id,'st'=>1])->find();
+        return self::where(['article.id'=>$id,'article.st'=>1])->field('article.*,cate.name cate')->join('cate','cate_id=cate.id')->find();
     }
   public function getCateId($cate_name){
       $status = ['媒体报道'=>1, '行业资讯'=>2, '企业动态'=>3];

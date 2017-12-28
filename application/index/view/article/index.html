@@ -1,104 +1,146 @@
-<img src="__STATIC__images/information_bg.jpg" alt="" class="news-banner">
+<img src="__IMGURL__{$ad->img}" alt="暂无图片" class="news-banner">
 <div class="news-wrap">
     <div class="news-inner">
         <ul class="news-tab">
-            <li class="active cate_tab" >产品展示</li>
-            <li class="cate_tab">公司动态</li>
-            <li class="cate_tab">最新资讯</li>
+            <?php foreach($list_cate as $k=>$cate){?>
+            <li class="<?= $k==0?'active':'';?> cate_tab" onclick="getNews('{$cate->id}',this)">{$cate->name}</li>
+            <?php }?>
         </ul>
         <div class="news-cont-wrap">
             <div class="news-cont bd">
-                <div class="news-cont-tab">
-                    <a class="top-news" href="{:url('/new/:id')}">
-                        <img src="__STATIC__images/information_pic.jpg" alt="">
-                        <div class="top-news-txt">
-                            <h3>WeLove 酸奶</h3>
-                            <p>
-                                爱喝酸奶？总是喝完来不及买？给孩子早餐、中餐带什么好？来自制WeLove酸奶吧！几个小时的时间，您在家即可DIY！六种不同的口味新鲜、健康、美味爱喝酸奶？总是喝完来不及买？给孩子早餐、中餐带什么好？来自制WeLove酸奶爱喝酸奶？总是喝完来不及买？给孩子早餐、中餐带什么好？来自制WeLove酸奶爱喝酸奶？总是喝完来不及买？给孩子早餐、中餐带什么好？来自制WeLove酸奶！</p>
-                            <p class="news-time">2017-12-12 08:30:24</p>
-                        </div>
-                    </a>
-                    <div class="news-list">
+                <div class="news-cont-tab" >
+                    <?php if(!$list_new->isEmpty()){?>
+                    <div id="top_new">
+                        <a target="_new" class="top-news" href='<?php echo url("/new/".$list_new[0]->id) ;?>'>
+                            <img src="__IMGURL__{$list_new[0]->img}" alt="暂无图片">
+                            <div class="top-news-txt">
+                                <h3>{$list_new[0]->name}</h3>
+                                <p>{$list_new[0]->charm}</p>
+                                <p class="news-time">{$list_new[0]->create_time}</p>
+                            </div>
+                        </a>
+                    </div>
 
-                        <a class="news-item">
+                    <?php }?>
+                    <?php if($list_new->count()>1){?>
+
+                    <div class="news-list" id="news_list">
+                        <?php foreach($list_new as $k=>$val){if($k==0)continue;?>
+                        <a target="_new" class="news-item" href="<?= url('/new/'.$val->id) ;?>">
                             <div class="a-wrap news-item-active">
-                                <img src="__STATIC__images/pic.jpg" alt="" class="news-item-pic">
+                                <img src="__IMGURL__{$list_new[0]->img}" alt="暂无图片" class="news-item-pic">
                                 <div class="news-info">
-                                    <p class="news-info-title">WELOVE 冰淇淋</p>
-                                    <p class="news-info-txt">马上要有聚会了？吃什么甜点好呢？是时候拿出WeLove冰激凌粉啦！</p>
-                                    <p class="news-info-time">2017-12-09 08:30:24</p>
+                                    <p class="news-info-title">{$val->name}</p>
+                                    <p class="news-info-txt">{$val->charm}</p>
+                                    <p class="news-info-time">{$val->create_time}</p>
                                 </div>
                             </div>
                         </a>
-
+                        <?php }?>
                     </div>
-                    <div class="load-more">
+
+                    <?php }?>
+                    <div class="load-more" style="display: <?php echo $more==true?'block':'none' ;?>" onclick="loadMore()">
                         <span>加载更多</span>
                     </div>
                 </div>
             </div>
-            <div class="company bd" style="display: none">
-                <div class="news-cont-tab">
-                    <a class="top-news" href="{:url('/new/:id')}">
-                        <img src="__STATIC__images/information_pic.jpg" alt="">
-                        <div class="top-news-txt">
-                            <h3>WeLove 酸奶</h3>
-                            <p>
-                                爱喝酸奶？总是喝完来不及买？给孩子早餐、中餐带什么好？来自制WeLove酸奶吧！几个小时的时间，您在家即可DIY！六种不同的口味新鲜、健康、美味爱喝酸奶？总是喝完来不及买？给孩子早餐、中餐带什么好？来自制WeLove酸奶爱喝酸奶？总是喝完来不及买？给孩子早餐、中餐带什么好？来自制WeLove酸奶爱喝酸奶？总是喝完来不及买？给孩子早餐、中餐带什么好？来自制WeLove酸奶！</p>
-                            <p class="news-time">2017-12-12 08:30:24</p>
-                        </div>
-                    </a>
-                    <div class="news-list">
-
-                        <a class="news-item">
-                            <div class="a-wrap news-item-active">
-                                <img src="__STATIC__images/pic.jpg" alt="" class="news-item-pic">
-                                <div class="news-info">
-                                    <p class="news-info-title">WELOVE 冰淇淋</p>
-                                    <p class="news-info-txt">马上要有聚会了？吃什么甜点好呢？是时候拿出WeLove冰激凌粉啦！</p>
-                                    <p class="news-info-time">2017-12-09 08:30:24</p>
-                                </div>
-                            </div>
-                        </a>
-
-                    </div>
-                </div>
+          <!--  <div class="company bd" style="display: none" >
+                1
             </div>
-            <div class="consult bd" style="display: none">
-                <div class="news-cont-tab">
-                    <a class="top-news" href="{:url('/new/:id')}">
-                        <img src="__STATIC__images/information_pic.jpg" alt="">
-                        <div class="top-news-txt">
-                            <h3>WeLove 酸奶</h3>
-                            <p>
-                                爱喝酸奶？总是喝完来不及买？给孩子早餐、中餐带什么好？来自制WeLove酸奶吧！几个小时的时间，您在家即可DIY！六种不同的口味新鲜、健康、美味爱喝酸奶？总是喝完来不及买？给孩子早餐、中餐带什么好？来自制WeLove酸奶爱喝酸奶？总是喝完来不及买？给孩子早餐、中餐带什么好？来自制WeLove酸奶爱喝酸奶？总是喝完来不及买？给孩子早餐、中餐带什么好？来自制WeLove酸奶！</p>
-                            <p class="news-time">2017-12-12 08:30:24</p>
-                        </div>
-                    </a>
-                    <div class="news-list">
-
-                        <a class="news-item">
-                            <div class="a-wrap news-item-active">
-                                <img src="__STATIC__images/pic.jpg" alt="" class="news-item-pic">
-                                <div class="news-info">
-                                    <p class="news-info-title">WELOVE 冰淇淋</p>
-                                    <p class="news-info-txt">马上要有聚会了？吃什么甜点好呢？是时候拿出WeLove冰激凌粉啦！</p>
-                                    <p class="news-info-time">2017-12-09 08:30:24</p>
-                                </div>
-                            </div>
-                        </a>
-
-                    </div>
-                    <div class="load-more">
-                        <span>加载更多</span>
-                    </div>
-                </div>
-            </div>
+            <div class="consult bd" style="display: none" >
+                2
+            </div>-->
         </div>
     </div>
 </div>
 <script>
-    $('.cate_tab').click(function () {
+    var cate_id = '{$list_cate[0]->id}';
+    var cur_page=1;
+   // alert(cate_id)
+    function getNews($cate_id, obj) {
+        $(obj).addClass('active').siblings('li').removeClass('active');
+        cate_id=$cate_id;
 
-    });
+        $.ajax({
+            url: "{:url('get_list')}",
+            method: 'get',
+            data: {
+                cate_id: $cate_id,
+            },
+            success: function (data) {
+                if (data.code != 0) {
+                    alert(data.msg)
+                } else {
+                    cur_page=1;
+                   if( data.data.current_page==data.data.last_page){
+                       $('.load-more').fadeOut();
+                   }else{
+                       $('.load-more').fadeIn();
+                   }
+                    var list_ = data.data.data;
+                    var str = ''
+                    //alert(list_.length)
+                    if (list_[0]) {
+
+                        var hrefs="{:url('/new/"+list_[0].id+"')}";
+                        str += '<a target="_new" class="top-news" href="'+hrefs+'"><img src="__IMGURL__'+list_[0].img+'" alt="">';
+                        str += '<div class="top-news-txt"><h3>'+list_[0].name+'</h3><p>'+list_[0].charm+'</p>';
+                        str += ' <p class="news-time">'+list_[0].create_time+'</p></div></a>';
+
+                        $('#top_new').html(str);
+                    }
+                    if (list_.length > 1) {
+                        list_.splice(0,1);
+                        //alert(list_[0].id);
+                        $('#news_list').html(loadOhter(list_));
+                    }
+                }
+
+            }
+        })
+    }
+
+    function loadOhter(list_) {
+
+       var  str2 = '';
+       var hrefs='';
+        for (var i = 0; i < list_.length; i++) {
+            hrefs="{:url('/new/"+list_[i].id+"')}";
+            str2 += '<a target="_new" class="news-item" href="'+hrefs+'"><div class="a-wrap news-item-active"><img src="__IMGURL__'+list_[i].img+'" alt="" class="news-item-pic">';
+            str2 += '<div class="news-info"> <p class="news-info-title">'+list_[i].name+'</p>';
+            str2 += '<p class="news-info-txt">'+list_[i].charm+'</p><p class="news-info-time">'+list_[i].create_time+'</p></div></div></a>';
+        }
+//        alert(str2)
+        return str2;
+
+    }
+    function loadMore() {
+      //  alert('more')
+        $.ajax({
+            url: "{:url('get_list')}",
+            method: 'get',
+            data: {
+                cate_id: cate_id,
+                page:cur_page+1
+            },
+            success: function (data) {
+                if (data.code != 0) {
+                    alert(data.msg)
+                    //$('.load-more').fadeOut();
+                } else {
+                    if(data.data.current_page==data.data.last_page){
+                        $('.load-more').fadeOut();
+                    }
+                    var list_ = data.data.data;
+                    $('#news_list').append(loadOhter(list_));
+                    cur_page++;
+
+                }
+
+            }
+        })
+
+    }
+
 </script>
