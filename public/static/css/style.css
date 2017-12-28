@@ -415,7 +415,7 @@ u{
 
 /*下载页面*/
 .download-wrap {
-  min-width: 100%;
+  width: 1240px;
   height: 800px;
   background: url("../img/particulars_pic.jpg") center no-repeat;
 }
