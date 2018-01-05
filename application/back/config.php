@@ -15,9 +15,7 @@ return [
     // +----------------------------------------------------------------------
    'upload_size'=>2097158,
     'url_common_param'       => true,
-    // 是否开启路由
-    'url_route_on'           => false,
-    'controller_suffix'      => 'Controller',
+
     // 视图输出字符串内容替换
 
 ];
