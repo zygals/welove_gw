@@ -471,7 +471,6 @@ u{
   width: 1180px;
   margin:0 auto;
   display: flex;
-  justify-content: space-between;
 }
 .about-inner .about-inner-img {
   width: 100%;
