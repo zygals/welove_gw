@@ -269,7 +269,6 @@ u{
   background-size:cover;
 }
 .pg {
-  width: 100%;
   height: 700px;
 }
 .inner {
@@ -464,9 +463,6 @@ u{
 }
 
 /*关于我们*/
-.about-banner {
-  width: 1240px;
-}
 .about-cont {
   background-color: #fafafa;
   margin-top: -4px;
@@ -475,7 +471,6 @@ u{
   width: 1180px;
   margin:0 auto;
   display: flex;
-  justify-content: space-between;
 }
 .about-inner .about-inner-img {
   width: 100%;
@@ -510,9 +505,6 @@ u{
 /*新闻资讯*/
 .news-wrap {
   background-color: #fafafa;
-}
-.news-banner {
-  width: 1240px;
 }
 .news-inner {
   width: 1180px;
