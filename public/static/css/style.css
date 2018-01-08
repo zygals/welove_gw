@@ -75,7 +75,7 @@ i{
   margin: 0 auto;
 }
 .header {
-  height: 102px;
+  height: 101px;
   display: flex;
   align-items: center;
   justify-content: space-between;
