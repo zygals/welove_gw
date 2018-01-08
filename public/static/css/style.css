@@ -14,14 +14,6 @@ footer,header,hgroup,menu,nav,section {
 a{
   color:#000;
 }
-/*
-h1,h2,h3,h4,h5,h6,em,del{
-	font-style:normal;
-	font-weight:normal;
-	font-size:100%;
-	-webkit-text-size-adjust:none;
-}
-*/
 html, body {
   width: 100%;
   min-width: 1240px;
@@ -33,30 +25,6 @@ nav ul {
 li{
   list-style:none;
 }
-
-blockquote, q {
-  quotes:none;
-}
-
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content:'';
-  content:none;
-}
-.outline[type=text]:focus,.outline[type=submit]:focus,
-.outline[type=radio]:focus,.outline[type=checkbox]:focus,.outline[type=password]:focus{
-  outline:none;
-}
-
-input[type=text]:focus,input[type=submit]:focus,
-input[type=radio]:focus,input[type=checkbox]:focus,input[type=password]:focus{
-  outline:none;
-}
-button:focus,input:focus,input{
-  outline:none;
-
-}
-
 a {
   display: block;
   margin:0;
@@ -72,118 +40,6 @@ a:hover{
 }
 i{
   font-style:normal;
-}
-em
-{
-  color:#f00;
-  font-size:16px;
-  margin-top:5px;
-  font-style:normal;
-}
-
-/* change colours to suit your needs */
-ins {
-  background-color:#ff9;
-  color:#000;
-  text-decoration:none;
-}
-
-/* change colours to suit your needs */
-mark {
-  background-color:#ff9;
-  color:#000;
-  font-style:italic;
-  font-weight:bold;
-}
-
-del {
-  text-decoration: line-through;
-}
-
-abbr[title], dfn[title] {
-  border-bottom:1px dotted;
-  cursor:help;
-}
-
-table {
-  border-collapse:collapse;
-  border-spacing:0;
-}
-
-/* change border colour to suit your needs */
-hr {
-  display:block;
-  height:1px;
-  border:0;
-  border-top:1px solid #cccccc;
-  margin:1em 0;
-  padding:0;
-}
-
-
-button,
-input,
-select,
-textarea {
-  margin: 0;
-  font-size: 100%;
-  vertical-align: middle;
-}
-
-button,
-input {
-  *overflow: visible;
-  line-height: normal;
-}
-
-button::-moz-focus-inner,
-input::-moz-focus-inner {
-  padding: 0;
-  border: 0;
-}
-
-button,
-html input[type="button"],
-input[type="reset"],
-input[type="submit"] {
-  cursor: pointer;
-  -webkit-appearance: button;
-}
-
-label,
-select,
-button,
-input[type="button"],
-input[type="reset"],
-input[type="submit"],
-input[type="radio"],
-input[type="checkbox"] {
-  cursor: pointer;
-}
-
-input[type="search"] {
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-  -webkit-appearance: textfield;
-}
-
-input[type="search"]::-webkit-search-decoration,
-input[type="search"]::-webkit-search-cancel-button {
-  -webkit-appearance: none;
-}
-
-textarea {
-  overflow: auto;
-  vertical-align: top;
-}
-
-
-
-u{
-  display:block;
-  background:no-repeat;
-  background-position:50% 50%;
 }
 
 .clearfix:after{
@@ -212,18 +68,14 @@ u{
   visibility:hidden;
 }
 
-
-
-
 /*首页*/
-
 .wrap {
   position: relative;
   width: 1180px;
   margin: 0 auto;
 }
 .header {
-  height: 100px;
+  height: 101px;
   display: flex;
   align-items: center;
   justify-content: space-between;
