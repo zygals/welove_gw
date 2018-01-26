@@ -2,7 +2,6 @@
 
 use think\Route;
 
-
 Route::pattern([
     'id'    =>  '\d+',
 ]);
@@ -16,6 +15,7 @@ Route::get('news','index/Article/index');
 Route::get('about','index/About/index');
 //new
 Route::get('new/:id','index/Article/read');
+
 
 
 
