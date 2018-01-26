@@ -17,7 +17,7 @@ return [
     // 应用命名空间
     'app_namespace' => 'app',
     // 应用调试模式
-    'app_debug' => true,
+    'app_debug' => false,
     // 应用Trace
     'app_trace' => false,
     // 应用模式状态
@@ -46,7 +46,7 @@ return [
     'default_filter' => '',
     // 默认语言
     'default_lang' => 'zh-cn',
-    // 应用类库后缀
+    // 应false缀
     'class_suffix' => false,
     // 控制器类后缀
     'controller_suffix' => 'controller',

@@ -32,11 +32,12 @@ class AdminController extends BaseController{
 		$pass=$request->param('pass');
 
 		$pwd=Admin::pwdGenerate($pass);
-       // return $pwd;
+//        return $pwd;
 		$condition=array();
 		$condition['name']=$name;
 		$condition['pwd']=$pwd;
 		$admin = Admin::get($condition);
+//		return $admin;
 		if($admin){
             $admin->setInc('times');
 			session('admin_weilai',(object)array('name'=>$admin->name,'id'=>$admin->id));
